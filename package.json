@@ -1,9 +1,20 @@
 {
   "name": "pushy-expo-plugin",
   "version": "1.0.0",
+  "description": "The official Pushy Expo Config Plugin for Expo apps.",
   "main": "app.plugin.js",
   "dependencies": {
     "@expo/config-plugins": "^6.0.0",
     "expo-build-properties": "^0.13.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pushy/pushy-expo-plugin.git"
+  },
+  "author": "Pushy <support@pushy.me>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/pushy/pushy-expo-plugin/issues"
+  },
+  "homepage": "https://github.com/pushy/pushy-expo-plugin#readme"
 }
