@@ -24,7 +24,7 @@ Please set the `aps-environment` plugin property to `production` when building y
     [
       "pushy-expo-plugin",
       {
-        "aps-environment": "production",
+        "aps-environment": "production"
       }
     ]
   ]
