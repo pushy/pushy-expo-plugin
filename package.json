@@ -1,6 +1,6 @@
 {
   "name": "pushy-expo-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The official Pushy Expo Config Plugin for Expo apps.",
   "main": "app.plugin.js",
   "dependencies": {
