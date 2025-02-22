@@ -1,27 +1,5 @@
 const { withBuildProperties } = require('expo-build-properties');
-const { withEntitlementsPlist, withPlugins, withAndroidManifest, withMainApplication, withAppDelegate, withAppBuildGradle, AndroidConfig, createRunOncePlugin } = require('@expo/config-plugins');
-
-// Function to modify AppDelegate.mm to include the PushyModule initialization
-const withPushyiOSAppDelegateModification = (config) => {
-  return withAppDelegate(config, (config) => {
-    let { modResults } = config;
-
-    // Add PushyModule.h import if not present
-    if (!modResults.contents.includes('#import <PushyModule.h>')) {
-      modResults.contents = '#import <PushyModule.h>\n' + modResults.contents;
-    }
-
-    // Inject PushyModule initialization code inside didFinishLaunchingWithOptions
-    if (!modResults.contents.includes('[PushyModule didFinishLaunchingWithOptions:launchOptions]')) {
-      modResults.contents = modResults.contents.replace(
-        /(.+didFinishLaunchingWithOptions.+\s*\{)/,
-        `$1\n  // Initialize Pushy Module\n  [PushyModule didFinishLaunchingWithOptions:launchOptions];\n`
-      );
-    }
-
-    return config;
-  });
-};
+const { withEntitlementsPlist, withPlugins, createRunOncePlugin } = require('@expo/config-plugins');
 
 // Function to add the 'aps-environment' key/capability to the entitlements plist
 const withPushyiOSEntitlementsPlistModification = (config) => {
@@ -64,7 +42,6 @@ const withPushyExpoPlugin = (config, props) => {
   // Use withPlugins to chain multiple modifications together
   return withPlugins(config, [
     withPushyCustomBuildProperties,
-    withPushyiOSAppDelegateModification,
     withPushyiOSEntitlementsPlistModification
   ]);
 };
