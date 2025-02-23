@@ -1,4 +1,3 @@
-const { withBuildProperties } = require('expo-build-properties');
 const { withEntitlementsPlist, withPlugins, createRunOncePlugin } = require('@expo/config-plugins');
 
 // Function to add the 'aps-environment' key/capability to the entitlements plist
@@ -19,21 +18,6 @@ const withPushyiOSEntitlementsPlistModification = (config) => {
   });
 };
 
-// Function to enable modular headers for the MqttCocoaAsyncSocket Cocoapods dependency
-const withPushyCustomBuildProperties = (config) => {
-  return withBuildProperties(config, {
-    ios: {
-      extraPods: [
-        {
-          // Fix Cocoapods error (lack of modular header support)
-          name: 'MqttCocoaAsyncSocket',
-          modular_headers: true
-        }
-      ]
-    }
-  });
-};
-
 // Main config plugin function
 const withPushyExpoPlugin = (config, props) => {
   // Store props in config
@@ -41,7 +25,6 @@ const withPushyExpoPlugin = (config, props) => {
 
   // Use withPlugins to chain multiple modifications together
   return withPlugins(config, [
-    withPushyCustomBuildProperties,
     withPushyiOSEntitlementsPlistModification
   ]);
 };
