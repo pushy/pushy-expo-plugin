@@ -4,8 +4,8 @@
   "description": "The official Pushy Expo Config Plugin for Expo apps.",
   "main": "app.plugin.js",
   "dependencies": {
-    "@expo/config-plugins": "^6.0.0",
-    "expo-build-properties": "^0.13.2"
+    "@expo/config-plugins": "^10.1.2",
+    "expo-build-properties": "^0.14.8"
   },
   "repository": {
     "type": "git",
